@@ -33,7 +33,7 @@ const Header = ({
             alt={settings.headerLogo.alt}
             width={120}
             height={56}
-            className="object-contain"
+            className="w-auto h-14 object-contain"
           />
         </Link>
         <nav className="items-center gap-8 font-semibold text-black-pearl lg:flex hidden">

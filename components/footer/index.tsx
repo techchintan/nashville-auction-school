@@ -23,14 +23,14 @@ const Footer = ({
                 className="object-contain"
               />
             </Link>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col  gap-3">
               <p className="text-black-pearl font-medium text-xl">
                 Subscribe to Newsletter
               </p>
-              <div className="bg-white rounded-[5px] flex">
+              <div className="bg-white rounded-[5px] items-center  flex">
                 <Input
                   placeholder="Email Here"
-                  className="bg-white placeholder:text-atomic-grey border-0 shadow-none rounded-[5px]"
+                  className="bg-white placeholder:text-atomic-grey border-0 h-full shadow-none rounded-[5px]"
                 />
                 <Button variant="primary" className="font-semibold">
                   Subscribe

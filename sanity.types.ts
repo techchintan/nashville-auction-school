@@ -26,39 +26,36 @@ export type Link = {
   isExternal?: boolean;
 };
 
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-      listItem?: "bullet" | "number";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    }
-  | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-      _key: string;
-    }
->;
+export type BlockContent = Array<{
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  }>;
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  listItem?: "bullet" | "number";
+  markDefs?: Array<{
+    href?: string;
+    _type: "link";
+    _key: string;
+  }>;
+  level?: number;
+  _type: "block";
+  _key: string;
+} | {
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  };
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  _type: "image";
+  _key: string;
+}>;
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
@@ -85,6 +82,49 @@ export type Course = {
   courseTitle: string;
 };
 
+export type Home = {
+  _id: string;
+  _type: "home";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo: Seo;
+  herobannerBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  herobannerHeading: string;
+  herobannerSubHeading: string;
+  herobannerTitle: string;
+  herobannerSubTitle: string;
+  herobannerButton1: Link;
+  herobannerButton2: Link;
+  upcomingCourseImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  upcomingCourseTitle: string;
+  upcomingCourseButton: Link;
+};
+
 export type Settings = {
   _id: string;
   _type: "settings";
@@ -104,11 +144,9 @@ export type Settings = {
     alt: string;
     _type: "image";
   };
-  headerLinks: Array<
-    {
-      _key: string;
-    } & Link
-  >;
+  headerLinks: Array<{
+    _key: string;
+  } & Link>;
   headerButton: string;
   footerLogo: {
     asset: {
@@ -125,11 +163,9 @@ export type Settings = {
   };
   footerLinkGroups: Array<{
     label: string;
-    groupLinks: Array<
-      {
-        _key: string;
-      } & Link
-    >;
+    groupLinks: Array<{
+      _key: string;
+    } & Link>;
     _key: string;
   }>;
   contactPhone: number;
@@ -284,27 +320,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes =
-  | Seo
-  | Link
-  | BlockContent
-  | SanityImageCrop
-  | SanityImageHotspot
-  | Course
-  | Settings
-  | HighlightColor
-  | TextColor
-  | SimplerColor
-  | MediaTag
-  | Slug
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageMetadata
-  | SanityFileAsset
-  | SanityAssetSourceData
-  | SanityImageAsset
-  | Geopoint;
+export type AllSanitySchemaTypes = Seo | Link | BlockContent | SanityImageCrop | SanityImageHotspot | Course | Home | Settings | HighlightColor | TextColor | SimplerColor | MediaTag | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: settingsQuery
@@ -328,11 +344,9 @@ export type SettingsQueryResult = {
     alt: string;
     _type: "image";
   };
-  headerLinks: Array<
-    {
-      _key: string;
-    } & Link
-  >;
+  headerLinks: Array<{
+    _key: string;
+  } & Link>;
   headerButton: string;
   footerLogo: {
     asset: {
@@ -349,11 +363,9 @@ export type SettingsQueryResult = {
   };
   footerLinkGroups: Array<{
     label: string;
-    groupLinks: Array<
-      {
-        _key: string;
-      } & Link
-    >;
+    groupLinks: Array<{
+      _key: string;
+    } & Link>;
     _key: string;
   }>;
   contactPhone: number;
@@ -378,11 +390,56 @@ export type SettingsQueryResult = {
     _key: string;
   }>;
 } | null;
+// Variable: homePageQuery
+// Query: *[_id == 'home' && _type == 'home'][0]
+export type HomePageQueryResult = {
+  _id: "home";
+  _type: "home";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo: Seo;
+  herobannerBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  herobannerHeading: string;
+  herobannerSubHeading: string;
+  herobannerTitle: string;
+  herobannerSubTitle: string;
+  herobannerButton1: Link;
+  herobannerButton2: Link;
+  upcomingCourseImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  upcomingCourseTitle: string;
+  upcomingCourseButton: Link;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_id == 'settings' && _type == 'settings'][0]": SettingsQueryResult;
+    "*[_id == 'home' && _type == 'home'][0]": HomePageQueryResult;
   }
 }
