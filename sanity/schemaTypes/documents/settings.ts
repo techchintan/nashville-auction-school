@@ -104,5 +104,45 @@ export const settings = defineType({
       group: "footer",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "socialMediaLinks",
+      title: "Social Media Link",
+      type: "array",
+      group: "footer",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "image",
+              title: "Image",
+              type: "image",
+              validation: (Rule) => Rule.required().assetRequired(),
+              fields: [
+                defineField({
+                  name: "alt",
+                  title: "Alt Text",
+                  type: "string",
+                  validation: (Rule) => Rule.required(),
+                }),
+              ],
+            }),
+            defineField({
+              name: "url",
+              title: "URL",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "isExternal",
+              title: "Is External",
+              type: "boolean",
+              initialValue: false,
+            }),
+          ],
+        },
+      ],
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 });

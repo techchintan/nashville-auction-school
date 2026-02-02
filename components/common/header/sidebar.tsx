@@ -18,12 +18,15 @@ const Sidebar = ({
   isSidebarOpen,
   setIsSidebarOpen,
   settings,
+  isSidebarMounted,
+  setIsSidebarMounted,
 }: {
   isSidebarOpen: boolean;
+  isSidebarMounted: boolean;
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+  setIsSidebarMounted: Dispatch<SetStateAction<boolean>>;
   settings: NonNullable<SettingsQueryResult>;
 }) => {
-  const [isSidebarMounted, setIsSidebarMounted] = useState<boolean>(false);
   const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout>(null);
 

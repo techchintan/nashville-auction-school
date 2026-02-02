@@ -135,6 +135,24 @@ export type Settings = {
   contactPhone: number;
   contactEmail: string;
   contactDescription: string;
+  socialMediaLinks: Array<{
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    url: string;
+    isExternal?: boolean;
+    _key: string;
+  }>;
 };
 
 export type HighlightColor = {
@@ -341,6 +359,24 @@ export type SettingsQueryResult = {
   contactPhone: number;
   contactEmail: string;
   contactDescription: string;
+  socialMediaLinks: Array<{
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    url: string;
+    isExternal?: boolean;
+    _key: string;
+  }>;
 } | null;
 
 // Query TypeMap

@@ -100,6 +100,7 @@
   --color-dull-black: var(--color-dull-black);
   --color-black-pearl: var(--color-black-pearl);
   --color-shiny-white: var(--color-shiny-white);
+  --color-atomic-grey: var(--color-atomic-grey);
 }
 
 :root {
@@ -142,6 +143,7 @@
   --color-vivid-orange: #ff8200;
   --color-black-pearl: #001829;
   --color-dull-black: #161616;
+  --color-atomic-grey: #575757;
 }
 
 .dark {

@@ -14,16 +14,28 @@ const Header = ({
   settings: NonNullable<SettingsQueryResult>;
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [isSidebarMounted, setIsSidebarMounted] = useState<boolean>(false);
+
   return (
-    <header className="w-full shadow-md fixed top-0 left-0 z-10">
+    <header className="w-full shadow-md bg-white fixed top-0 left-0 z-10">
       <div className="max-width-container padding-container py-6! flex items-center justify-between">
-        <SanityImage
-          src={settings.headerLogo}
-          alt={settings.headerLogo.alt}
-          width={120}
-          height={56}
-          className="object-contain"
-        />
+        <Link
+          href={"/"}
+          onClick={() => {
+            if (isSidebarOpen) {
+              setIsSidebarOpen(false);
+              setTimeout(() => setIsSidebarMounted(false), 300);
+            }
+          }}
+        >
+          <SanityImage
+            src={settings.headerLogo}
+            alt={settings.headerLogo.alt}
+            width={120}
+            height={56}
+            className="object-contain"
+          />
+        </Link>
         <nav className="items-center gap-8 font-semibold text-black-pearl lg:flex hidden">
           {settings.headerLinks.map((link) => (
             <Link
@@ -46,6 +58,8 @@ const Header = ({
             isSidebarOpen={isSidebarOpen}
             setIsSidebarOpen={setIsSidebarOpen}
             settings={settings}
+            isSidebarMounted={isSidebarMounted}
+            setIsSidebarMounted={setIsSidebarMounted}
           />
         </div>
       </div>
