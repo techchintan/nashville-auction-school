@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { SettingsQueryResult } from "@/sanity.types";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
 const subMenuLinks = [
@@ -27,6 +28,7 @@ const Sidebar = ({
   setIsSidebarMounted: Dispatch<SetStateAction<boolean>>;
   settings: NonNullable<SettingsQueryResult>;
 }) => {
+  const pathname = usePathname();
   const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout>(null);
 
@@ -39,7 +41,10 @@ const Sidebar = ({
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1024) setIsSidebarMounted(false);
+      if (window.innerWidth > 1024) {
+        setIsSidebarMounted(false);
+        setIsSidebarOpen(false);
+      }
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);

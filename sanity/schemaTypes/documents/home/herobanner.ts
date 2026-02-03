@@ -2,13 +2,6 @@ import { defineField } from "sanity";
 
 export const herobanner = [
   defineField({
-    name: "seo",
-    title: "Seo",
-    type: "seo",
-    group: "seo",
-    validation: (Rule) => Rule.required(),
-  }),
-  defineField({
     name: "herobannerBgImage",
     title: "herobanner Bg Image",
     type: "image",

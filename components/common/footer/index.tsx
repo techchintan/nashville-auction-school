@@ -1,8 +1,8 @@
 import { SettingsQueryResult } from "@/sanity.types";
 import Link from "next/link";
-import { SanityImage } from "../common/image";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { SanityImage } from "../image";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const Footer = ({
   settings,

@@ -1,5 +1,5 @@
+import Footer from "@/components/common/footer";
 import Header from "@/components/common/header";
-import Footer from "@/components/footer";
 import { SettingsQueryResult } from "@/sanity.types";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { settingsQuery } from "@/sanity/lib/queries";

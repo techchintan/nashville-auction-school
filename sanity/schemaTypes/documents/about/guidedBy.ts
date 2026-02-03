@@ -1,50 +1,25 @@
 import { defineField } from "sanity";
 
-export const whyUs = [
+export const guidedBy = [
   defineField({
-    name: "whyUsBackgroundImage",
-    title: "Why Us Background Image",
-    type: "image",
-    group: "whyUs",
-    validation: (Rule) => Rule.required().assetRequired(),
-    options: {
-      hotspot: true,
-    },
-    fields: [
-      defineField({
-        name: "alt",
-        type: "string",
-        title: "Alt",
-        validation: (Rule) => Rule.required(),
-      }),
-    ],
-  }),
-  defineField({
-    name: "whyUsHeading",
-    title: "Why Us Heading",
+    name: "guidedByHeading",
+    title: "Guided By Heading",
     type: "string",
-    group: "whyUs",
+    group: "guidedBy",
     validation: (Rule) => Rule.required(),
   }),
   defineField({
-    name: "whyUsContent",
-    title: "Why Us Content",
+    name: "guidedByContent",
+    title: "Guided By Content",
     type: "blockContent",
-    group: "whyUs",
+    group: "guidedBy",
     validation: (Rule) => Rule.required(),
   }),
   defineField({
-    name: "whyUsButton",
-    title: "Why Us Button",
-    type: "link",
-    group: "whyUs",
-    validation: (Rule) => Rule.required(),
-  }),
-  defineField({
-    name: "whyUsImages",
-    title: "Why Us Images",
+    name: "guidedByImages",
+    title: "Guided By Images",
     type: "array",
-    group: "whyUs",
+    group: "guidedBy",
     validation: (Rule) => [Rule.required()],
     of: [
       {

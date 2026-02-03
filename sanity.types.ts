@@ -26,36 +26,129 @@ export type Link = {
   isExternal?: boolean;
 };
 
-export type BlockContent = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  listItem?: "bullet" | "number";
-  markDefs?: Array<{
-    href?: string;
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<
+        | ({
+            _key: string;
+          } & TextColor)
+        | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }
+      >;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }
+  | {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+      _key: string;
+    }
+>;
+
+export type Course = {
+  _id: string;
+  _type: "course";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  courseTitle: string;
+};
+
+export type About = {
+  _id: string;
+  _type: "about";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo: Seo;
+  herobannerBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
   };
-  media?: unknown;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  _type: "image";
-  _key: string;
-}>;
+  herobannerTitle: string;
+  aboutHeading: string;
+  aboutContent: BlockContent;
+  aboutImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  guidedByHeading: string;
+  guidedByContent: BlockContent;
+  guidedByImages: Array<{
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    name: string;
+    designation: string;
+    _key: string;
+  }>;
+  aboutPagePoints?: Array<{
+    heading: string;
+    content: BlockContent;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    _key: string;
+  }>;
+};
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
@@ -71,15 +164,6 @@ export type SanityImageHotspot = {
   y: number;
   height: number;
   width: number;
-};
-
-export type Course = {
-  _id: string;
-  _type: "course";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  courseTitle: string;
 };
 
 export type Home = {
@@ -123,6 +207,143 @@ export type Home = {
   };
   upcomingCourseTitle: string;
   upcomingCourseButton: Link;
+  whyUsBackgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  whyUsHeading: string;
+  whyUsContent: BlockContent;
+  whyUsButton: Link;
+  whyUsImages: Array<{
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    name: string;
+    designation: string;
+    _key: string;
+  }>;
+  ourCoursesHeading: string;
+  ourCoursesContent: BlockContent;
+  ourCoursesBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  continuingEducationBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  continuingEducationHeading: string;
+  continuingEducationContent: BlockContent;
+  becomeAVipBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  becomeAVipHeading: string;
+  becomeAVipContent: BlockContent;
+  becomeAVipButton: Link;
+  solutionsBackgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  solutionsHeading: string;
+  solutionsContent: BlockContent;
+  solutionsButton: Link;
+  solutionsImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  providerBackgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  providerHeading: string;
+  providerContent: BlockContent;
+  providerImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
 };
 
 export type Settings = {
@@ -144,9 +365,11 @@ export type Settings = {
     alt: string;
     _type: "image";
   };
-  headerLinks: Array<{
-    _key: string;
-  } & Link>;
+  headerLinks: Array<
+    {
+      _key: string;
+    } & Link
+  >;
   headerButton: string;
   footerLogo: {
     asset: {
@@ -163,9 +386,11 @@ export type Settings = {
   };
   footerLinkGroups: Array<{
     label: string;
-    groupLinks: Array<{
-      _key: string;
-    } & Link>;
+    groupLinks: Array<
+      {
+        _key: string;
+      } & Link
+    >;
     _key: string;
   }>;
   contactPhone: number;
@@ -320,7 +545,29 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Seo | Link | BlockContent | SanityImageCrop | SanityImageHotspot | Course | Home | Settings | HighlightColor | TextColor | SimplerColor | MediaTag | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes =
+  | Seo
+  | Link
+  | BlockContent
+  | Course
+  | About
+  | SanityImageCrop
+  | SanityImageHotspot
+  | Home
+  | Settings
+  | HighlightColor
+  | TextColor
+  | SimplerColor
+  | MediaTag
+  | Slug
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: settingsQuery
@@ -344,9 +591,11 @@ export type SettingsQueryResult = {
     alt: string;
     _type: "image";
   };
-  headerLinks: Array<{
-    _key: string;
-  } & Link>;
+  headerLinks: Array<
+    {
+      _key: string;
+    } & Link
+  >;
   headerButton: string;
   footerLogo: {
     asset: {
@@ -363,9 +612,11 @@ export type SettingsQueryResult = {
   };
   footerLinkGroups: Array<{
     label: string;
-    groupLinks: Array<{
-      _key: string;
-    } & Link>;
+    groupLinks: Array<
+      {
+        _key: string;
+      } & Link
+    >;
     _key: string;
   }>;
   contactPhone: number;
@@ -433,6 +684,220 @@ export type HomePageQueryResult = {
   };
   upcomingCourseTitle: string;
   upcomingCourseButton: Link;
+  whyUsBackgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  whyUsHeading: string;
+  whyUsContent: BlockContent;
+  whyUsButton: Link;
+  whyUsImages: Array<{
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    name: string;
+    designation: string;
+    _key: string;
+  }>;
+  ourCoursesHeading: string;
+  ourCoursesContent: BlockContent;
+  ourCoursesBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  continuingEducationBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  continuingEducationHeading: string;
+  continuingEducationContent: BlockContent;
+  becomeAVipBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  becomeAVipHeading: string;
+  becomeAVipContent: BlockContent;
+  becomeAVipButton: Link;
+  solutionsBackgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  solutionsHeading: string;
+  solutionsContent: BlockContent;
+  solutionsButton: Link;
+  solutionsImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  providerBackgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  providerHeading: string;
+  providerContent: BlockContent;
+  providerImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+} | null;
+// Variable: aboutPageQuery
+// Query: *[_id == 'about' && _type == 'about'][0]
+export type AboutPageQueryResult = {
+  _id: "about";
+  _type: "about";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo: Seo;
+  herobannerBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  herobannerTitle: string;
+  aboutHeading: string;
+  aboutContent: BlockContent;
+  aboutImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  guidedByHeading: string;
+  guidedByContent: BlockContent;
+  guidedByImages: Array<{
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    name: string;
+    designation: string;
+    _key: string;
+  }>;
+  aboutPagePoints?: Array<{
+    heading: string;
+    content: BlockContent;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    _key: string;
+  }>;
 } | null;
 
 // Query TypeMap
@@ -441,5 +906,6 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_id == 'settings' && _type == 'settings'][0]": SettingsQueryResult;
     "*[_id == 'home' && _type == 'home'][0]": HomePageQueryResult;
+    "*[_id == 'about' && _type == 'about'][0]": AboutPageQueryResult;
   }
 }

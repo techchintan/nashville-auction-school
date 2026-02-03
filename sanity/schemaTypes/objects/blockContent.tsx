@@ -1,3 +1,4 @@
+import { HighlighterIcon } from "lucide-react";
 import { defineField } from "sanity";
 
 export const commonRichFields = [
@@ -22,24 +23,35 @@ export const commonRichFields = [
         { title: "Strong", value: "strong" },
         { title: "Emphasis", value: "em" },
       ],
-      //   annotations: [
-      //     {
-      //       title: "URL",
-      //       name: "link",
-      //       type: "object",
-      //       fields: [
-      //         {
-      //           title: "URL",
-      //           name: "href",
-      //           type: "url",
-      //           validation: (Rule) =>
-      //             Rule.uri({
-      //               scheme: ["http", "https", "mailto", "tel"],
-      //             }),
-      //         },
-      //       ],
-      //     },
-      //   ],
+      annotations: [
+        {
+          type: "textColor",
+          name: "textColor",
+          title: "Text Color",
+          icon: () => <HighlighterIcon className="h-4 w-4" />,
+          component: ({
+            value,
+            children,
+          }: {
+            value: string;
+            children: React.ReactNode;
+          }) => <span style={{ color: value }}>{children}</span>,
+        },
+        {
+          title: "URL",
+          name: "link",
+          type: "object",
+          fields: [
+            defineField({
+              name: "href",
+              title: "URL",
+              type: "url",
+              validation: (Rule) =>
+                Rule.uri({ scheme: ["http", "https", "mailto", "tel"] }),
+            }),
+          ],
+        },
+      ],
     },
   },
 ];
@@ -57,15 +69,7 @@ const blockContent = {
         hotspot: true,
         storeOriginalFilename: true,
       },
-      validation: (Rule) => [
-        Rule.required(),
-        Rule.custom((value) => {
-          if (!value?.asset?._ref) {
-            return "Image `is` required";
-          }
-          return true;
-        }),
-      ],
+      validation: (Rule) => Rule.required().assetRequired(),
     }),
   ],
 };

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -20,13 +21,12 @@
   /* Breakpoints */
   --breakpoint-xxl: 1440px;
 }
-
 .max-width-container {
-  @apply mx-auto max-w-[1440px];
+  @apply mx-auto max-w-360;
 }
 
 .padding-container {
-  @apply px-4 py-[50px] md:px-8 md:py-20 lg:px-[100px] lg:py-[80px] xl:px-[120px] xl:py-[100px];
+  @apply px-4 py-12.5 md:px-8 md:py-20 lg:px-25 lg:py-20 xl:px-30 xl:py-25;
 }
 
 .hero-banner-title {
@@ -40,18 +40,6 @@
   to {
     transform: translateX(-100%);
   }
-}
-
-.typography-heading {
-  @apply text-2xl uppercase xl:text-4xl;
-}
-
-.typography-title {
-  @apply text-2xl font-semibold capitalize sm:text-4xl sm:font-bold xl:text-[40px];
-}
-
-.typography-text {
-  @apply text-base capitalize;
 }
 
 @theme inline {
@@ -95,12 +83,15 @@
   --radius-4xl: calc(var(--radius) + 16px);
 
   --font-unbuntu-sans: var(--font-unbuntu-sans);
+  --font-roboto: var(--font-roboto);
 
   --color-vivid-orange: var(--color-vivid-orange);
   --color-dull-black: var(--color-dull-black);
   --color-black-pearl: var(--color-black-pearl);
   --color-shiny-white: var(--color-shiny-white);
   --color-atomic-grey: var(--color-atomic-grey);
+  --color-grape: var(--color-grape);
+  --color-blue-chalk: var(--color-blue-chalk);
 }
 
 :root {
@@ -138,12 +129,15 @@
   --foreground: oklch(0.141 0.005 285.823);
 
   --font-unbuntu-sans: "Ubuntu Sans", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
 
   --color-shiny-white: #f3f8ff;
   --color-vivid-orange: #ff8200;
   --color-black-pearl: #001829;
   --color-dull-black: #161616;
   --color-atomic-grey: #575757;
+  --color-grape: #6b21a8;
+  --color-blue-chalk: #f3e8ff;
 }
 
 .dark {

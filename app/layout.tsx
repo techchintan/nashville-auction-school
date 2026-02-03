@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Ubuntu_Sans } from "next/font/google";
+import { Roboto, Ubuntu_Sans } from "next/font/google";
 import "./globals.css";
 
 const ubuntuSans = Ubuntu_Sans({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-unbuntu-sans",
+  style: ["normal", "italic"],
+  preload: true,
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-roboto",
   style: ["normal", "italic"],
   preload: true,
 });
@@ -22,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ubuntuSans.variable} antialiased font-unbuntu-sans`}>
+      <body
+        className={`${ubuntuSans.variable} ${roboto.variable} antialiased font-unbuntu-sans`}
+      >
         {children}
       </body>
     </html>
