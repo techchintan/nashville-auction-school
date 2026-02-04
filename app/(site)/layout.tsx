@@ -2,6 +2,7 @@ import Footer from "@/components/common/footer";
 import Header from "@/components/common/header";
 import { SettingsQueryResult } from "@/sanity.types";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { SanityLiveAAA } from "@/sanity/lib/liveAAAA";
 import { settingsQuery } from "@/sanity/lib/queries";
 
 export default async function Layout({
@@ -17,6 +18,7 @@ export default async function Layout({
       <main>{children}</main>
       <Footer settings={data} />
       <SanityLive />
+      <SanityLiveAAA />
     </>
   );
 }

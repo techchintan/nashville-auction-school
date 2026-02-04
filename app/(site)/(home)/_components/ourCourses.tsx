@@ -1,47 +1,17 @@
 import HammerHeading from "@/components/common/hammerHeading";
 import { SanityImage } from "@/components/common/image";
 import { Button } from "@/components/ui/button";
-import RichText from "@/components/ui/rich-text";
+import RichText from "@/components/common/rich-text";
 import { cn } from "@/lib/utils";
 import { HomePageQueryResult } from "@/sanity.types";
-
-const courses = [
-  {
-    heading: "Educational ",
-    title: "Pre-licensing Education (in-person or hybrid)",
-    description:
-      "Complete the education you need to earn your auctioneer license through flexible in-person or hybrid formats designed for real career preparation.",
-  },
-  {
-    heading: "Educational ",
-    title: "Pre-licensing Education (in-person or hybrid)",
-    description:
-      "Complete the education you need to earn your auctioneer license through flexible in-person or hybrid formats designed for real career preparation.",
-  },
-  {
-    heading: "Educational ",
-    title: "Pre-licensing Education (in-person or hybrid)",
-    description:
-      "Complete the education you need to earn your auctioneer license through flexible in-person or hybrid formats designed for real career preparation.",
-  },
-  {
-    heading: "Educational ",
-    title: "Pre-licensing Education (in-person or hybrid)",
-    description:
-      "Complete the education you need to earn your auctioneer license through flexible in-person or hybrid formats designed for real career preparation.",
-  },
-  {
-    heading: "Educational ",
-    title: "Pre-licensing Education (in-person or hybrid)",
-    description:
-      "Complete the education you need to earn your auctioneer license through flexible in-person or hybrid formats designed for real career preparation.",
-  },
-];
+import { AAACoursesQueryResult } from "@/types";
 
 const OurCourses = ({
   homePage,
+  courses
 }: {
   homePage: NonNullable<HomePageQueryResult>;
+  courses: NonNullable<AAACoursesQueryResult>
 }) => {
   return (
     <div className="relative">
@@ -72,6 +42,7 @@ const OurCourses = ({
               )}
             >
               <div className="w-full min-h-50 bg-gray-400 relative">
+                <SanityImage src={course.courseImage} alt={course.courseImage.asset?.altText || course.courseTitle} fromAAA fill className="object-cover"/>
                 <span className="absolute left-4 top-4 z-1 py-1 px-2 bg-blue-chalk text-grape rounded-[5px] text-sm font-roboto">
                   New
                 </span>
@@ -80,14 +51,14 @@ const OurCourses = ({
                 <div className="pt-6 px-4 pb-4 flex flex-col gap-4">
                   <div className="text-black-pearl">
                     <p className="font-roboto font-medium text-base leading-[110%]">
-                      {course.heading}
+                      {course.courseTag.courseTag}
                     </p>
                     <p className="font-roboto font-bold text-2xl leading-[110%]">
-                      {course.title}
+                      {course.courseTitle}
                     </p>
                   </div>
                   <p className="text-dull-black leading-6.25 text-base">
-                    {course.description}
+                    {course.courseShortDescription}
                   </p>
                 </div>
                 <div className="p-4">

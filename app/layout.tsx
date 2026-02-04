@@ -29,10 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="no-scrollbar">
       <body
         className={`${ubuntuSans.variable} ${roboto.variable} antialiased font-unbuntu-sans`}
       >
+        <div id="fb-root"></div>
         {children}
       </body>
     </html>

@@ -92,7 +92,9 @@
   --color-atomic-grey: var(--color-atomic-grey);
   --color-grape: var(--color-grape);
   --color-blue-chalk: var(--color-blue-chalk);
-  --color-kawaii-grey: var(--color-kawaii-grey)
+  --color-kawaii-grey: var(--color-kawaii-grey);
+  --color-vibrant-silver: var(--color-vibrant-silver);
+  --color-eternity: var(--color-eternity)
 }
 
 :root {
@@ -140,6 +142,8 @@
   --color-grape: #6b21a8;
   --color-blue-chalk: #f3e8ff;
   --color-kawaii-grey: #C9C9C9;
+  --color-vibrant-silver: #CECECE;
+  --color-eternity: #21180F;
 }
 
 .dark {

@@ -1,7 +1,7 @@
 import HammerHeading from "@/components/common/hammerHeading";
 import { SanityImage } from "@/components/common/image";
 import { Button } from "@/components/ui/button";
-import RichText from "@/components/ui/rich-text";
+import RichText from "@/components/common/rich-text";
 import { HomePageQueryResult } from "@/sanity.types";
 import Link from "next/link";
 

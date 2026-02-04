@@ -1,6 +1,6 @@
 import HammerHeading from "@/components/common/hammerHeading";
 import { SanityImage } from "@/components/common/image";
-import RichText from "@/components/ui/rich-text";
+import RichText from "@/components/common/rich-text";
 import { cn } from "@/lib/utils";
 import { AboutPageQueryResult } from "@/sanity.types";
 

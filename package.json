@@ -13,6 +13,8 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.22.0",
@@ -24,6 +26,7 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-hook-form": "^7.71.1",
     "sanity": "^4.22.0",
     "sanity-plugin-media": "^4.1.1",
     "sanity-plugin-simpler-color-input": "^4.0.0",

@@ -3,18 +3,15 @@
 import { SanityImage } from "@/components/common/image";
 import { Button } from "@/components/ui/button";
 import { HomePageQueryResult } from "@/sanity.types";
+import { AAACoursesQueryResult } from "@/types";
 import Link from "next/link";
-
-const courses = [
-  "Apr 24, 27, 2025 (hybrid)",
-  "Aug 07, 10 - June 6 (hybrid)",
-  "Nov 13-20, 2025 (in-person)",
-];
 
 const UpcomingCourses = ({
   homePage,
+  courses
 }: {
   homePage: NonNullable<HomePageQueryResult>;
+  courses: NonNullable<AAACoursesQueryResult>
 }) => {
   return (
     <div className="bg-black-pearl">
@@ -33,12 +30,12 @@ const UpcomingCourses = ({
         </div>
         <div className="flex w-full flex-1 items-center overflow-hidden">
           <div className="no-scrollbar flex w-full flex-col items-center gap-6 md:animate-[marquee_10s_linear_infinite] md:flex-row md:gap-10">
-            {courses.map((course, index) => (
+            {courses.map((course) => (
               <p
-                key={index}
+                key={course._id}
                 className="text-xl whitespace-nowrap text-vivid-orange"
               >
-                {course}
+                {course.courseDates}
               </p>
             ))}
           </div>
