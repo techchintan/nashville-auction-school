@@ -26,44 +26,38 @@ export type Link = {
   isExternal?: boolean;
 };
 
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-      listItem?: "bullet" | "number";
-      markDefs?: Array<
-        | ({
-            _key: string;
-          } & TextColor)
-        | {
-            href?: string;
-            _type: "link";
-            _key: string;
-          }
-      >;
-      level?: number;
-      _type: "block";
-      _key: string;
-    }
-  | {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-      _key: string;
-    }
->;
+export type BlockContent = Array<{
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  }>;
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  listItem?: "bullet" | "number";
+  markDefs?: Array<{
+    _key: string;
+  } & TextColor | {
+    href?: string;
+    _type: "link";
+    _key: string;
+  }>;
+  level?: number;
+  _type: "block";
+  _key: string;
+} | {
+  asset: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  };
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  _type: "image";
+  _key: string;
+}>;
 
 export type Course = {
   _id: string;
@@ -130,7 +124,7 @@ export type About = {
     designation: string;
     _key: string;
   }>;
-  aboutPagePoints?: Array<{
+  aboutPagePoints: Array<{
     heading: string;
     content: BlockContent;
     image: {
@@ -365,11 +359,9 @@ export type Settings = {
     alt: string;
     _type: "image";
   };
-  headerLinks: Array<
-    {
-      _key: string;
-    } & Link
-  >;
+  headerLinks: Array<{
+    _key: string;
+  } & Link>;
   headerButton: string;
   footerLogo: {
     asset: {
@@ -386,11 +378,9 @@ export type Settings = {
   };
   footerLinkGroups: Array<{
     label: string;
-    groupLinks: Array<
-      {
-        _key: string;
-      } & Link
-    >;
+    groupLinks: Array<{
+      _key: string;
+    } & Link>;
     _key: string;
   }>;
   contactPhone: number;
@@ -545,29 +535,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes =
-  | Seo
-  | Link
-  | BlockContent
-  | Course
-  | About
-  | SanityImageCrop
-  | SanityImageHotspot
-  | Home
-  | Settings
-  | HighlightColor
-  | TextColor
-  | SimplerColor
-  | MediaTag
-  | Slug
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageMetadata
-  | SanityFileAsset
-  | SanityAssetSourceData
-  | SanityImageAsset
-  | Geopoint;
+export type AllSanitySchemaTypes = Seo | Link | BlockContent | Course | About | SanityImageCrop | SanityImageHotspot | Home | Settings | HighlightColor | TextColor | SimplerColor | MediaTag | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: settingsQuery
@@ -591,11 +559,9 @@ export type SettingsQueryResult = {
     alt: string;
     _type: "image";
   };
-  headerLinks: Array<
-    {
-      _key: string;
-    } & Link
-  >;
+  headerLinks: Array<{
+    _key: string;
+  } & Link>;
   headerButton: string;
   footerLogo: {
     asset: {
@@ -612,11 +578,9 @@ export type SettingsQueryResult = {
   };
   footerLinkGroups: Array<{
     label: string;
-    groupLinks: Array<
-      {
-        _key: string;
-      } & Link
-    >;
+    groupLinks: Array<{
+      _key: string;
+    } & Link>;
     _key: string;
   }>;
   contactPhone: number;
@@ -880,7 +844,7 @@ export type AboutPageQueryResult = {
     designation: string;
     _key: string;
   }>;
-  aboutPagePoints?: Array<{
+  aboutPagePoints: Array<{
     heading: string;
     content: BlockContent;
     image: {

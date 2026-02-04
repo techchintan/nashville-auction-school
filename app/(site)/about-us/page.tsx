@@ -4,6 +4,8 @@ import { aboutPageQuery } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import Herobanner from "./_components/herobanner";
 import About from "./_components/about";
+import GuidedBy from "./_components/guidedBy";
+import AboutPagePoints from "./_components/aboutPagePoints";
 
 export const generateMetadata = async () => {
   const { data: aboutPage }: { data: NonNullable<AboutPageQueryResult> } =
@@ -30,6 +32,8 @@ const AboutPage = async () => {
     <div className="pt-26">
       <Herobanner aboutPage={aboutPage} />
       <About aboutPage={aboutPage} />
+      <GuidedBy aboutPage={aboutPage}/>
+      <AboutPagePoints aboutPagePoints={aboutPage.aboutPagePoints}/>
     </div>
   );
 };

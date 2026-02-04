@@ -86,7 +86,7 @@ export const settings = defineType({
     defineField({
       name: "contactPhone",
       title: "Contact Phone",
-      type: "number",
+      type: "string",
       group: "footer",
       validation: (Rule) => Rule.required(),
     }),

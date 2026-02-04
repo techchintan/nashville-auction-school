@@ -17,7 +17,7 @@ const RichText: React.FC<Props> = ({
   highlightedTextClassName,
 }) => {
   const combinedClassNames = cn(
-    "prose max-w-none prose-h3:text-black-pearl prose-h3:leading-[100%]! prose-h3:text-[24px] sm:prose-h3:text-[30px] md:prose-h3:text-[40px] prose-h3:font-semibold prose-h3:capitalize prose-h3:mb-2 prose-p:mt-4 prose-p:text-base prose-p:text-dull-black prose-p:leading-[25px]",
+    "prose max-w-none prose-h3:text-black-pearl prose-h3:leading-[100%]! prose-h3:text-[24px] sm:prose-h3:text-[30px] md:prose-h3:text-[40px] prose-h3:font-semibold prose-h3:capitalize prose-h3:mb-2 prose-p:mt-4 prose-p:text-base prose-p:text-dull-black prose-p:leading-[25px] prose-strong:text-inherit",
     className,
   );
 
@@ -67,19 +67,6 @@ const RichText: React.FC<Props> = ({
         value: any;
         children: React.ReactNode;
       }) => <span style={{ color: value.value }}>{children}</span>,
-      highlightedText: ({ children }: { children: React.ReactNode }) => (
-        <span
-          className={cn(
-            "text-lg font-bold sm:text-xl md:text-2xl",
-            highlightedTextClassName,
-          )}
-        >
-          {children}
-        </span>
-      ),
-      logo: () => (
-        <span className="text-[55px] sm:text-[75px] md:text-[110px]">∓</span>
-      ),
     },
     types: {
       image: ({ value }: any) => {

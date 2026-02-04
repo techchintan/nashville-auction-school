@@ -14,6 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { usePathname } from "next/navigation";
 
 const subMenuLinks = [
   "Pre-License Education",
@@ -39,6 +40,7 @@ const Header = ({
     width: 0,
     height: 0,
   });
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleResize = () => {
@@ -91,7 +93,7 @@ const Header = ({
             <Link
               href={link.url}
               key={link._key}
-              className="hover:text-vivid-orange duration-300"
+              className={cn("hover:text-vivid-orange duration-300", pathname === link.url && 'text-vivid-orange')}
             >
               {link.label}
             </Link>

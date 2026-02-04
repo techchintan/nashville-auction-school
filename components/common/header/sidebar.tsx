@@ -102,7 +102,7 @@ const Sidebar = ({
                     300,
                   );
                 }}
-                className="hover:text-vivid-orange duration-300 w-fit group flex gap-6 items-center"
+                className={cn("hover:text-vivid-orange duration-300 w-fit group flex gap-6 items-center", pathname === link.url && 'text-vivid-orange')}
               >
                 <span>{link.label}</span>
                 <ArrowRight className="group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 opacity-0 duration-300" />

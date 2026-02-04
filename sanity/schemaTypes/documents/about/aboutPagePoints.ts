@@ -39,5 +39,6 @@ export const aboutPagePoints = [
         ],
       },
     ],
+    validation: (Rule) => Rule.required(),
   }),
 ];

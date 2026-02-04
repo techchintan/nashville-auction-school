@@ -92,6 +92,7 @@
   --color-atomic-grey: var(--color-atomic-grey);
   --color-grape: var(--color-grape);
   --color-blue-chalk: var(--color-blue-chalk);
+  --color-kawaii-grey: var(--color-kawaii-grey)
 }
 
 :root {
@@ -138,6 +139,7 @@
   --color-atomic-grey: #575757;
   --color-grape: #6b21a8;
   --color-blue-chalk: #f3e8ff;
+  --color-kawaii-grey: #C9C9C9;
 }
 
 .dark {

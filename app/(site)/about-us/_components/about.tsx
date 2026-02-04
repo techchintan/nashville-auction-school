@@ -15,12 +15,12 @@ const About = ({
           <HammerHeading text={aboutPage.aboutHeading} />
           <RichText content={aboutPage.aboutContent} />
         </div>
-        <div className="relative lg:col-span-2">
+        <div className="relative hidden lg:block lg:col-span-2">
           <SanityImage
             src={aboutPage.aboutImage}
             alt={aboutPage.aboutImage.alt}
             fill
-            className="min-w-[490px] h-full! object-cover opacity-10 object-center"
+            className="min-w-122.5 h-full! object-cover opacity-10 object-center"
           />
         </div>
       </div>
