@@ -5,18 +5,16 @@ import Link from "next/link";
 import React from "react";
 import { SanityImage } from "./image";
 import { getUrlFromId } from "@/utils";
-import YoutubeVideo from './youtubeVideo'
+import YoutubeVideo from "./youtubeVideo";
 
 interface Props {
   content: Array<any> | undefined;
   className?: string;
+  fromAAA?: boolean;
   highlightedTextClassName?: string;
 }
 
-const RichText: React.FC<Props> = ({
-  content,
-  className,
-}) => {
+const RichText: React.FC<Props> = ({ content, className,fromAAA }) => {
   const combinedClassNames = cn(
     "prose max-w-none prose-h3:text-black-pearl prose-h3:leading-[100%]! prose-h3:text-[24px] sm:prose-h3:text-[30px] md:prose-h3:text-[40px] prose-h3:font-semibold prose-h3:capitalize prose-h3:mb-2 prose-p:mt-4 prose-p:text-base prose-p:text-dull-black prose-p:leading-[25px] prose-strong:text-inherit",
     className,
@@ -75,6 +73,7 @@ const RichText: React.FC<Props> = ({
           <figure>
             {value && (
               <SanityImage
+                fromAAA={fromAAA}
                 src={value}
                 alt={value.alt || "Nashville Auction School"}
                 width={1000}
@@ -91,18 +90,25 @@ const RichText: React.FC<Props> = ({
         );
       },
       youtube: (props: any) => {
-      return (
-        <div className="flex justify-center">
-          <YoutubeVideo videoId={props.value.videoId}/>
-        </div>
-      );
-    },
-    audio: (props: any) => {
-      const ref = props.value.audio?.asset?._ref;
-      const url = getUrlFromId(ref);
-      if (!url) return null;
-      return <audio style={{ width: "100%" }} src={url} controls title={props.value.alt} />;
-    },
+        return (
+          <div className="flex justify-center">
+            <YoutubeVideo videoId={props.value.videoId} />
+          </div>
+        );
+      },
+      audio: (props: any) => {
+        const ref = props.value.audio?.asset?._ref;
+        const url = getUrlFromId(ref);
+        if (!url) return null;
+        return (
+          <audio
+            style={{ width: "100%" }}
+            src={url}
+            controls
+            title={props.value.alt}
+          />
+        );
+      },
     },
   };
 

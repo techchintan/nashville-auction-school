@@ -1,7 +1,7 @@
 import { SanityImage } from "@/components/common/image";
-import { NewsQueryResult } from "@/sanity.types";
+import { NewsPageQueryResult } from "@/sanity.types";
 
-const HeroBanner = ({ data }: { data: NonNullable<NewsQueryResult> }) => {
+const HeroBanner = ({ data }: { data: NonNullable<NewsPageQueryResult> }) => {
   return (
     <div className="relative aspect-3/4 max-h-150 w-full sm:aspect-auto sm:h-150 sm:max-h-150">
       <SanityImage

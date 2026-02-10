@@ -1,5 +1,5 @@
 import RichText from "@/components/common/rich-text";
-import { NewsDetailQueryResult } from "@/sanity.types";
+import { NewsDetailQueryResult } from "@/types";
 
 export default function NewsDetails({
   data,
@@ -11,7 +11,7 @@ export default function NewsDetails({
       <h1 className="text-black-pearl mb-5 text-[24px] font-bold md:text-[40px] lg:text-center">
         {data.title}
       </h1>
-      <RichText content={data.content} />
+      <RichText content={data.content} fromAAA/>
     </div>
   );
 }

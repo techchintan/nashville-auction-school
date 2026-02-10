@@ -6,27 +6,34 @@ export const homePageQuery = groq`*[_id == 'home' && _type == 'home'][0]`;
 
 export const aboutPageQuery = groq`*[_id == 'about' && _type == 'about'][0]`;
 
-export const newsQuery = groq`*[_type == "news"][0]{
+export const contactQuery = groq`*[_type == "contact"][0]`;
+
+export const newsPageQuery = groq`*[_type == "news"][0]`;
+
+export const becomeAVipPageQuery = groq`*[_type == "becomeAVip"][0]`;
+
+// AAA queries
+export const coursesQuery = groq`*[_type == 'courses' && 'NAS' in coursePlatforms] | order(orderRank) {...}`;
+
+export const newsQuery = groq`
+{
+  "categories": *[_type == "newsCategory"]{
     ...,
-    "newsCategory": *[_type == "newsCategory"]{
-        ...,
-        "count":count(*[_type == "newsDetails" && references(^._id)])
+    "count": count(*[_type == "newsDetails" && references(^._id)])
+  },
+
+  "newsList": *[_type == "newsDetails" && 'NAS' in newsPlatforms] | order(date desc){
+    ...,
+    newsCategory->{
+      ...
     },
-    "newsList": *[_type == "newsDetails"]| order(date desc) {
-        ...,
-        newsCategory->{
-            ...,
-        },
-        "plainContent":pt::text(content)
-    },
-    "totalNewsCount":count(*[_type == "newsDetails"])
-}`;
+    "plainContent": pt::text(content)
+  },
+
+  "totalNewsCount": count(*[_type == "newsDetails"])
+}
+`;
 
 export const newsDetailQuery = groq`*[_type == "newsDetails" && slug.current == $slug][0]{
     ...,
 }`;
-
-export const contactQuery = groq`*[_type == "contact"][0]`;
-
-// AAA queries
-export const coursesQuery = groq`*[_type == 'courses' && 'NAS' in coursePlatforms] | order(orderRank) {...}`;

@@ -1,5 +1,5 @@
 import { SanityImage } from "@/components/common/image";
-import { NewsDetailQueryResult } from "@/sanity.types";
+import { NewsDetailQueryResult } from "@/types";
 
 const HeroBanner = ({ data }: { data: NonNullable<NewsDetailQueryResult> }) => {
   return (
@@ -8,6 +8,7 @@ const HeroBanner = ({ data }: { data: NonNullable<NewsDetailQueryResult> }) => {
         src={data.desktopHeroBannerImage}
         alt={data.desktopHeroBannerImage.alt}
         className="z-0 h-full w-full object-cover"
+        fromAAA
         fill
       />
 

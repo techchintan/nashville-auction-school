@@ -1,16 +1,15 @@
-import { NewsDetailQueryResult } from "@/sanity.types";
-import { sanityFetch } from "@/sanity/lib/live";
 import { newsDetailQuery } from "@/sanity/lib/queries";
 import { redirect } from "next/navigation";
 import HeroBanner from "./components/heroBanner";
 import NewsDetails from "./components/newsDetails";
-import { NewsQueryResult } from "@/sanity.types";
 import { newsQuery } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
+import { sanityFetchAAA } from "@/sanity/lib/liveAAAA";
+import { NewsDetailQueryResult, NewsQueryResult } from "@/types";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
-  const { data }: {data: NonNullable<NewsDetailQueryResult>} = await sanityFetch({
+  const { data }: {data: NonNullable<NewsDetailQueryResult>} = await sanityFetchAAA({
     query: newsDetailQuery,
     params: { slug },
   });
@@ -29,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
-  const { data }: {data: NonNullable<NewsDetailQueryResult>} = await sanityFetch({
+  const { data }: {data: NonNullable<NewsDetailQueryResult>} = await sanityFetchAAA({
     query: newsDetailQuery,
     params: { slug },
   });

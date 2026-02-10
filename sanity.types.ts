@@ -13,62 +13,6 @@
  */
 
 // Source: schema.json
-export type CustomAudio = {
-  _type: "customAudio";
-  audio: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
-    media?: unknown;
-    _type: "file";
-  };
-  alt: string;
-};
-
-export type Youtube = {
-  _type: "youtube";
-  videoId: string;
-};
-
-export type BlockContentNews = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-  listItem?: "bullet" | "number";
-  markDefs?: Array<{
-    href?: string;
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-  };
-  media?: unknown;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt: string;
-  _type: "image";
-  _key: string;
-} | {
-  _key: string;
-} & CustomAudio | {
-  _key: string;
-} & Youtube>;
-
 export type Seo = {
   _type: "seo";
   seoTitle: string;
@@ -115,24 +59,15 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
-export type NewsDetails = {
+export type BecomeAVip = {
   _id: string;
-  _type: "newsDetails";
+  _type: "becomeAVip";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   seo: Seo;
-  newsCategory: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "newsCategory";
-  };
-  date: string;
-  author: string;
-  title: string;
-  slug: Slug;
-  desktopHeroBannerImage: {
+  heroBannerTitle: string;
+  heroBannerBackgroundImage: {
     asset: {
       _ref: string;
       _type: "reference";
@@ -145,7 +80,31 @@ export type NewsDetails = {
     alt: string;
     _type: "image";
   };
-  content: BlockContentNews;
+  vipDetailTitle: string;
+  vipDetailDescription: string;
+  vipDetailInfoTitle: string;
+  vipDetailInfoPoints: Array<{
+    icon: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    title: string;
+    description: string;
+    _key: string;
+  }>;
+  vipDetailButton: Link;
+  overviewTitle: string;
+  overviewDescription: BlockContent;
+  overviewCourseValidationNote: string;
 };
 
 export type SanityImageCrop = {
@@ -162,30 +121,6 @@ export type SanityImageHotspot = {
   y: number;
   height: number;
   width: number;
-};
-
-export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
-};
-
-export type NewsCategory = {
-  _id: string;
-  _type: "newsCategory";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name: string;
-};
-
-export type Course = {
-  _id: string;
-  _type: "course";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  courseTitle: string;
 };
 
 export type Contact = {
@@ -591,6 +526,12 @@ export type MediaTag = {
   name?: Slug;
 };
 
+export type Slug = {
+  _type: "slug";
+  current: string;
+  source?: string;
+};
+
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
   background?: string;
@@ -687,7 +628,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = CustomAudio | Youtube | BlockContentNews | Seo | Link | BlockContent | NewsDetails | SanityImageCrop | SanityImageHotspot | Slug | NewsCategory | Course | Contact | News | About | Home | Settings | HighlightColor | TextColor | SimplerColor | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = Seo | Link | BlockContent | BecomeAVip | SanityImageCrop | SanityImageHotspot | Contact | News | About | Home | Settings | HighlightColor | TextColor | SimplerColor | MediaTag | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: settingsQuery
@@ -1015,109 +956,6 @@ export type AboutPageQueryResult = {
     _key: string;
   }>;
 } | null;
-// Variable: newsQuery
-// Query: *[_type == "news"][0]{    ...,    "newsCategory": *[_type == "newsCategory"]{        ...,        "count":count(*[_type == "newsDetails" && references(^._id)])    },    "newsList": *[_type == "newsDetails"]| order(date desc) {        ...,        newsCategory->{            ...,        },        "plainContent":pt::text(content)    },    "totalNewsCount":count(*[_type == "newsDetails"])}
-export type NewsQueryResult = {
-  _id: string;
-  _type: "news";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  seo: Seo;
-  heroBannerTitle: string;
-  heroBannerBackgroundImage: {
-    asset: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-  newsCategory: Array<{
-    _id: string;
-    _type: "newsCategory";
-    _createdAt: string;
-    _updatedAt: string;
-    _rev: string;
-    name: string;
-    count: number;
-  }>;
-  newsList: Array<{
-    _id: string;
-    _type: "newsDetails";
-    _createdAt: string;
-    _updatedAt: string;
-    _rev: string;
-    seo: Seo;
-    newsCategory: {
-      _id: string;
-      _type: "newsCategory";
-      _createdAt: string;
-      _updatedAt: string;
-      _rev: string;
-      name: string;
-    };
-    date: string;
-    author: string;
-    title: string;
-    slug: Slug;
-    desktopHeroBannerImage: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt: string;
-      _type: "image";
-    };
-    content: BlockContentNews;
-    plainContent: string;
-  }>;
-  totalNewsCount: number;
-} | null;
-// Variable: newsDetailQuery
-// Query: *[_type == "newsDetails" && slug.current == $slug][0]{    ...,}
-export type NewsDetailQueryResult = {
-  _id: string;
-  _type: "newsDetails";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  seo: Seo;
-  newsCategory: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "newsCategory";
-  };
-  date: string;
-  author: string;
-  title: string;
-  slug: Slug;
-  desktopHeroBannerImage: {
-    asset: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-  content: BlockContentNews;
-} | null;
 // Variable: contactQuery
 // Query: *[_type == "contact"][0]
 export type ContactQueryResult = {
@@ -1150,9 +988,92 @@ export type ContactQueryResult = {
   phoneNumber: string;
   email: string;
 } | null;
+// Variable: newsPageQuery
+// Query: *[_type == "news"][0]
+export type NewsPageQueryResult = {
+  _id: string;
+  _type: "news";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo: Seo;
+  heroBannerTitle: string;
+  heroBannerBackgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+} | null;
+// Variable: becomeAVipPageQuery
+// Query: *[_type == "becomeAVip"][0]
+export type BecomeAVipPageQueryResult = {
+  _id: string;
+  _type: "becomeAVip";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo: Seo;
+  heroBannerTitle: string;
+  heroBannerBackgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  vipDetailTitle: string;
+  vipDetailDescription: string;
+  vipDetailInfoTitle: string;
+  vipDetailInfoPoints: Array<{
+    icon: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: "image";
+    };
+    title: string;
+    description: string;
+    _key: string;
+  }>;
+  vipDetailButton: Link;
+  overviewTitle: string;
+  overviewDescription: BlockContent;
+  overviewCourseValidationNote: string;
+} | null;
 // Variable: coursesQuery
 // Query: *[_type == 'courses' && 'NAS' in coursePlatforms] | order(orderRank) {...}
 export type CoursesQueryResult = Array<never>;
+// Variable: newsQuery
+// Query: {  "categories": *[_type == "newsCategory"]{    ...,    "count": count(*[_type == "newsDetails" && references(^._id)])  },  "newsList": *[_type == "newsDetails" && 'NAS' in newsPlatforms] | order(date desc){    ...,    newsCategory->{      ...    },    "plainContent": pt::text(content)  },  "totalNewsCount": count(*[_type == "newsDetails"])}
+export type NewsQueryResult = {
+  categories: Array<never>;
+  newsList: Array<never>;
+  totalNewsCount: number;
+};
+// Variable: newsDetailQuery
+// Query: *[_type == "newsDetails" && slug.current == $slug][0]{    ...,}
+export type NewsDetailQueryResult = null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -1161,9 +1082,11 @@ declare module "@sanity/client" {
     "*[_id == 'settings' && _type == 'settings'][0]": SettingsQueryResult;
     "*[_id == 'home' && _type == 'home'][0]": HomePageQueryResult;
     "*[_id == 'about' && _type == 'about'][0]": AboutPageQueryResult;
-    "*[_type == \"news\"][0]{\n    ...,\n    \"newsCategory\": *[_type == \"newsCategory\"]{\n        ...,\n        \"count\":count(*[_type == \"newsDetails\" && references(^._id)])\n    },\n    \"newsList\": *[_type == \"newsDetails\"]| order(date desc) {\n        ...,\n        newsCategory->{\n            ...,\n        },\n        \"plainContent\":pt::text(content)\n    },\n    \"totalNewsCount\":count(*[_type == \"newsDetails\"])\n}": NewsQueryResult;
-    "*[_type == \"newsDetails\" && slug.current == $slug][0]{\n    ...,\n}": NewsDetailQueryResult;
     "*[_type == \"contact\"][0]": ContactQueryResult;
+    "*[_type == \"news\"][0]": NewsPageQueryResult;
+    "*[_type == \"becomeAVip\"][0]": BecomeAVipPageQueryResult;
     "*[_type == 'courses' && 'NAS' in coursePlatforms] | order(orderRank) {...}": CoursesQueryResult;
+    "\n{\n  \"categories\": *[_type == \"newsCategory\"]{\n    ...,\n    \"count\": count(*[_type == \"newsDetails\" && references(^._id)])\n  },\n\n  \"newsList\": *[_type == \"newsDetails\" && 'NAS' in newsPlatforms] | order(date desc){\n    ...,\n    newsCategory->{\n      ...\n    },\n    \"plainContent\": pt::text(content)\n  },\n\n  \"totalNewsCount\": count(*[_type == \"newsDetails\"])\n}\n": NewsQueryResult;
+    "*[_type == \"newsDetails\" && slug.current == $slug][0]{\n    ...,\n}": NewsDetailQueryResult;
   }
 }

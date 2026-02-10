@@ -94,7 +94,8 @@
   --color-blue-chalk: var(--color-blue-chalk);
   --color-kawaii-grey: var(--color-kawaii-grey);
   --color-vibrant-silver: var(--color-vibrant-silver);
-  --color-eternity: var(--color-eternity)
+  --color-eternity: var(--color-eternity);
+  --color-charade:var(--color-charade)
 }
 
 :root {
@@ -144,6 +145,7 @@
   --color-kawaii-grey: #C9C9C9;
   --color-vibrant-silver: #CECECE;
   --color-eternity: #21180F;
+  --color-charade:#272D37;
 }
 
 .dark {

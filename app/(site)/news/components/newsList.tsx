@@ -5,10 +5,9 @@ import { SanityImage } from "@/components/common/image";
 import AngelDown from "@/icons/angelDown";
 import KeyPoint from "@/icons/keyPoint";
 import { cn } from "@/lib/utils";
-import { NewsQueryResult } from "@/sanity.types";
+import { NewsQueryResult } from "@/types";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ConfigResolutionError } from "sanity";
 
 const MAX_INSTRUCTOR_PER_PAGE = 3;
 const INITIAL_INSTRUCTOR_PER_PAGE = 6;
@@ -28,7 +27,7 @@ export default function NewsList({
       label: "All Categories",
       value: data.totalNewsCount,
     },
-    ...data.newsCategory.map((category) => ({
+    ...data.categories.map((category) => ({
       label: category.name,
       value: category.count,
     })),
@@ -134,6 +133,7 @@ export default function NewsList({
                 src={news.desktopHeroBannerImage}
                 alt={news.desktopHeroBannerImage.alt}
                 className="flex aspect-square rounded-md object-cover"
+                fromAAA
                 width={776}
                 height={776}
               />
