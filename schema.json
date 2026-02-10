@@ -2870,6 +2870,28 @@
         },
         "optional": false
       },
+      "headerButtonLinks": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "link"
+            }
+          }
+        },
+        "optional": false
+      },
       "footerLogo": {
         "type": "objectAttribute",
         "value": {

@@ -6,14 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
-const subMenuLinks = [
-  "Pre-License Education",
-  "Multi-State Continuing Education",
-  "Bid Calling",
-  "KY Core Course",
-  "Public Automobile Auctioneer License Education",
-  "State Exam Prep",
-];
+
 
 const Sidebar = ({
   isSidebarOpen,
@@ -136,10 +129,10 @@ const Sidebar = ({
                   isSubMenuOpen && "translate-y-0 max-h-10000",
                 )}
               >
-                {subMenuLinks.map((link) => (
+                {settings.headerButtonLinks.map((link) => (
                   <Link
                     href={"#"}
-                    key={link}
+                    key={link._key}
                     onClick={() => {
                       if (timeoutRef.current) {
                         clearTimeout(timeoutRef.current);
@@ -156,7 +149,7 @@ const Sidebar = ({
                       isSubMenuOpen && "opacity-100",
                     )}
                   >
-                    <span>{link}</span>
+                    <span>{link.label}</span>
                     <ArrowRight className="group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 opacity-0 duration-300" />
                   </Link>
                 ))}

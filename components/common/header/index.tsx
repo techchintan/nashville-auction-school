@@ -16,15 +16,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { usePathname } from "next/navigation";
 
-const subMenuLinks = [
-  "Pre-License Education",
-  "Multi-State Continuing Education",
-  "Bid Calling",
-  "KY Core Course",
-  "Public Automobile Auctioneer License Education",
-  "State Exam Prep",
-];
-
 const Header = ({
   settings,
 }: {
@@ -118,9 +109,9 @@ const Header = ({
                 sideOffset={40}
                 className="z-50 min-w-64 "
               >
-                {subMenuLinks.map((link) => (
+                {settings.headerButtonLinks.map((link) => (
                   <DropdownMenuItem
-                    key={link}
+                    key={link._key}
                     asChild
                     className=" cursor-pointer"
                   >
@@ -128,7 +119,7 @@ const Header = ({
                       href="#"
                       className="hover:text-vivid-orange! group duration-300 flex items-center text-black-pearl font-semibold hover:bg-black/4! text-base! justify-between gap-4 py-2"
                     >
-                      <span>{link}</span>
+                      <span>{link.label}</span>
                       <ArrowRight className="opacity-0 text-vivid-orange duration-300 group-hover:opacity-100 transition-all" />
                     </Link>
                   </DropdownMenuItem>

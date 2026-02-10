@@ -42,6 +42,18 @@ export const settings = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "headerButtonLinks",
+      title: "Header Button Links",
+      type: "array",
+      of: [
+        {
+          type: "link",
+        },
+      ],
+      group: "header",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "footerLogo",
       title: "Footer Logo",
       type: "image",
