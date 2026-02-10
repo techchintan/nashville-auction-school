@@ -35,7 +35,7 @@ const OurCourses = ({
             <div
               key={index}
               className={cn(
-                "border border-shiny-white shadow-md rounded-[10px] overflow-hidden",
+                "border border-shiny-white bg-white shadow-md rounded-[10px] overflow-hidden",
                 courses.length % 2 !== 0 &&
                   index === courses.length - 1 &&
                   "lg:col-span-2",
@@ -53,9 +53,9 @@ const OurCourses = ({
                   New
                 </span>
               </div>
-              <div className="bg-white">
+              <div>
                 <div className="pt-6 px-4 pb-4 flex flex-col gap-4">
-                  <div className="text-black-pearl">
+                  <div className="text-black-pearl flex flex-col gap-1">
                     <p className="font-roboto font-medium text-base leading-[110%]">
                       {course.courseTag.courseTag}
                     </p>
