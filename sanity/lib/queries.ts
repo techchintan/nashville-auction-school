@@ -12,7 +12,7 @@ export const newsPageQuery = groq`*[_id == "news" && _type == "news"][0]`;
 
 export const becomeAVipPageQuery = groq`*[_id == "becomeAVip" && _type == "becomeAVip"][0]`;
 
-export const regsterVipPageQuery = groq`[_id == "registerVip" && _type == "registerVip"][0]`
+export const registerVipPageQuery = groq`*[_id == "registerVip" && _type == "registerVip"][0]`;
 
 // AAA queries
 export const coursesQuery = groq`*[_type == 'courses' && 'NAS' in coursePlatforms] | order(orderRank) {

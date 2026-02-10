@@ -26,38 +26,44 @@ export type Link = {
   isExternal?: boolean;
 };
 
-export type BlockContent = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  listItem?: "bullet" | "number";
-  markDefs?: Array<{
-    _key: string;
-  } & TextColor | {
-    href?: string;
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-} | {
-  asset: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-  };
-  media?: unknown;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  _type: "image";
-  _key: string;
-}>;
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<
+        | ({
+            _key: string;
+          } & TextColor)
+        | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }
+      >;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }
+  | {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+      _key: string;
+    }
+>;
 
 export type RegisterVip = {
   _id: string;
@@ -66,7 +72,7 @@ export type RegisterVip = {
   _updatedAt: string;
   _rev: string;
   seo: Seo;
-  herobannerBgImage?: {
+  herobannerBgImage: {
     asset: {
       _ref: string;
       _type: "reference";
@@ -477,9 +483,11 @@ export type Settings = {
     alt: string;
     _type: "image";
   };
-  headerLinks: Array<{
-    _key: string;
-  } & Link>;
+  headerLinks: Array<
+    {
+      _key: string;
+    } & Link
+  >;
   headerButton: string;
   footerLogo: {
     asset: {
@@ -496,9 +504,11 @@ export type Settings = {
   };
   footerLinkGroups: Array<{
     label: string;
-    groupLinks: Array<{
-      _key: string;
-    } & Link>;
+    groupLinks: Array<
+      {
+        _key: string;
+      } & Link
+    >;
     _key: string;
   }>;
   contactPhone: string;
@@ -653,7 +663,32 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Seo | Link | BlockContent | RegisterVip | SanityImageCrop | SanityImageHotspot | BecomeAVip | Contact | News | About | Home | Settings | HighlightColor | TextColor | SimplerColor | MediaTag | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes =
+  | Seo
+  | Link
+  | BlockContent
+  | RegisterVip
+  | SanityImageCrop
+  | SanityImageHotspot
+  | BecomeAVip
+  | Contact
+  | News
+  | About
+  | Home
+  | Settings
+  | HighlightColor
+  | TextColor
+  | SimplerColor
+  | MediaTag
+  | Slug
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: settingsQuery
@@ -677,9 +712,11 @@ export type SettingsQueryResult = {
     alt: string;
     _type: "image";
   };
-  headerLinks: Array<{
-    _key: string;
-  } & Link>;
+  headerLinks: Array<
+    {
+      _key: string;
+    } & Link
+  >;
   headerButton: string;
   footerLogo: {
     asset: {
@@ -696,9 +733,11 @@ export type SettingsQueryResult = {
   };
   footerLinkGroups: Array<{
     label: string;
-    groupLinks: Array<{
-      _key: string;
-    } & Link>;
+    groupLinks: Array<
+      {
+        _key: string;
+      } & Link
+    >;
     _key: string;
   }>;
   contactPhone: string;
@@ -1086,9 +1125,32 @@ export type BecomeAVipPageQueryResult = {
   overviewDescription: BlockContent;
   overviewCourseValidationNote: BlockContent;
 } | null;
-// Variable: regsterVipPageQuery
-// Query: [_id == "registerVip" && _type == "registerVip"][0]
-export type RegsterVipPageQueryResult = null;
+// Variable: registerVipPageQuery
+// Query: *[_id == "registerVip" && _type == "registerVip"][0]
+export type RegisterVipPageQueryResult = {
+  _id: "registerVip";
+  _type: "registerVip";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo: Seo;
+  herobannerBgImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  herobannerTitle: string;
+  formTitle: string;
+  formButton: Link;
+} | null;
 // Variable: coursesQuery
 // Query: *[_type == 'courses' && 'NAS' in coursePlatforms] | order(orderRank) {  ...,  courseTag->}
 export type CoursesQueryResult = Array<never>;
@@ -1111,11 +1173,11 @@ declare module "@sanity/client" {
     "*[_id == 'home' && _type == 'home'][0]": HomePageQueryResult;
     "*[_id == 'about' && _type == 'about'][0]": AboutPageQueryResult;
     "*[_id == 'contact' && _type == \"contact\"][0]": ContactQueryResult;
-    "*[_id == \"news\" && _type == \"news\"][0]": NewsPageQueryResult;
-    "*[_id == \"becomeAVip\" && _type == \"becomeAVip\"][0]": BecomeAVipPageQueryResult;
-    "[_id == \"registerVip\" && _type == \"registerVip\"][0]": RegsterVipPageQueryResult;
+    '*[_id == "news" && _type == "news"][0]': NewsPageQueryResult;
+    '*[_id == "becomeAVip" && _type == "becomeAVip"][0]': BecomeAVipPageQueryResult;
+    '*[_id == "registerVip" && _type == "registerVip"][0]': RegisterVipPageQueryResult;
     "*[_type == 'courses' && 'NAS' in coursePlatforms] | order(orderRank) {\n  ...,\n  courseTag->\n}": CoursesQueryResult;
-    "\n{\n  \"categories\": *[_type == \"newsCategory\"]{\n    ...,\n    \"count\": count(*[_type == \"newsDetails\" && references(^._id)])\n  },\n\n  \"newsList\": *[_type == \"newsDetails\" && 'NAS' in newsPlatforms] | order(date desc){\n    ...,\n    newsCategory->{\n      ...\n    },\n    \"plainContent\": pt::text(content)\n  },\n\n  \"totalNewsCount\": count(*[_type == \"newsDetails\"])\n}\n": NewsQueryResult;
-    "*[_type == \"newsDetails\" && slug.current == $slug][0]{\n    ...,\n}": NewsDetailQueryResult;
+    '\n{\n  "categories": *[_type == "newsCategory"]{\n    ...,\n    "count": count(*[_type == "newsDetails" && references(^._id)])\n  },\n\n  "newsList": *[_type == "newsDetails" && \'NAS\' in newsPlatforms] | order(date desc){\n    ...,\n    newsCategory->{\n      ...\n    },\n    "plainContent": pt::text(content)\n  },\n\n  "totalNewsCount": count(*[_type == "newsDetails"])\n}\n': NewsQueryResult;
+    '*[_type == "newsDetails" && slug.current == $slug][0]{\n    ...,\n}': NewsDetailQueryResult;
   }
 }

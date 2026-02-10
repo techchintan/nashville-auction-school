@@ -2,6 +2,7 @@ import { SanityImage } from "@/components/common/image";
 import RichText from "@/components/common/rich-text";
 import { Button } from "@/components/ui/button";
 import { BecomeAVipPageQueryResult } from "@/sanity.types";
+import Link from "next/link";
 
 const VipDetail = ({
   becomeAVip,
@@ -46,9 +47,11 @@ const VipDetail = ({
                 </div>
               ))}
             </div>
-            <Button variant="primary" className="w-fit">
-              {becomeAVip.vipDetailButton.label}
-            </Button>
+            <Link href={becomeAVip.vipDetailButton.url}>
+              <Button variant="primary" className="w-fit">
+                {becomeAVip.vipDetailButton.label}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

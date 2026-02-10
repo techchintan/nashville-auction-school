@@ -459,7 +459,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "herobannerTitle": {
         "type": "objectAttribute",

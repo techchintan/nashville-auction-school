@@ -26,7 +26,7 @@ const Overview = ({
         />
         <RichText
           content={becomeAVip.overviewCourseValidationNote}
-          className="prose-p:text-medium-orchid prose-p:m-0 prose-p:text-base prose-p:leading-[100%] prose-p:capitalize"
+          className="prose-p:text-medium-orchid prose-p:m-0 prose-p:text-base prose-p:capitalize"
         />
       </div>
     </div>

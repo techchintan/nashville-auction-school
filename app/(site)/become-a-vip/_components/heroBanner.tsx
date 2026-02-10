@@ -11,7 +11,7 @@ export const HeroBanner = ({
       <SanityImage
         src={becomeAVip.heroBannerBackgroundImage}
         alt={becomeAVip.heroBannerBackgroundImage.alt}
-        className="z-0 hidden h-full w-full object-cover object-right sm:block"
+        className="z-0 h-full w-full object-cover"
         fill
       />
       <div className="relative z-1 flex h-full w-full flex-col justify-end bg-eternity/60">

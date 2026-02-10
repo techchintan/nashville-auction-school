@@ -66,7 +66,7 @@ export default function NewsList({
   return (
     <div className="max-width-container padding-container">
       <div className="xxl:grid-cols-4! grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <div className="xxl:col-span-1 sticky top-0 hidden h-fit lg:col-span-1 lg:block">
+        <div className="xxl:col-span-1 sticky top-26 hidden h-fit lg:col-span-1 lg:block">
           <p className="text-black-pearl w-full p-3 text-center text-xl font-bold capitalize">
             Categories
           </p>

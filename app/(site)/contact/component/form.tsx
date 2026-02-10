@@ -110,7 +110,7 @@ export default function ContactForm() {
             name="fullName"
             control={control}
             render={({ field, fieldState }) => (
-              <Field className="w-full">
+              <Field className="w-full gap-2">
                 <FieldLabel className="text-charade ">Full Name</FieldLabel>
                 <Input
                   {...field}
@@ -126,7 +126,7 @@ export default function ContactForm() {
             name="email"
             control={control}
             render={({ field, fieldState }) => (
-              <Field className="w-full">
+              <Field className="w-full gap-2">
                 <FieldLabel className="text-charade ">Email</FieldLabel>
                 <Input
                   {...field}
@@ -144,7 +144,7 @@ export default function ContactForm() {
             name="phoneNumber"
             control={control}
             render={({ field, fieldState }) => (
-              <Field className="w-full">
+              <Field className="w-full gap-2">
                 <FieldLabel className="text-charade ">Phone Number</FieldLabel>
                 <Input
                   className="text-black-pearl"
@@ -160,7 +160,7 @@ export default function ContactForm() {
             name="state"
             control={control}
             render={({ field, fieldState }) => (
-              <Field className="w-full">
+              <Field className="w-full gap-2">
                 <FieldLabel className="text-charade ">State</FieldLabel>
                 <Input
                   {...field}
@@ -178,7 +178,7 @@ export default function ContactForm() {
             name="preferred_method_of_contact"
             control={control}
             render={({ field, fieldState }) => (
-              <Field className="w-full">
+              <Field className="w-full gap-2">
                 <FieldLabel className="text-charade ">
                   Preferred method of contact
                 </FieldLabel>
@@ -196,7 +196,7 @@ export default function ContactForm() {
             name="How_did_you_hear_about_us"
             control={control}
             render={({ field, fieldState }) => (
-              <Field className="w-full">
+              <Field className="w-full gap-2">
                 <FieldLabel className="text-charade ">
                   How did you hear about us
                 </FieldLabel>
@@ -216,7 +216,7 @@ export default function ContactForm() {
           name="what_are_you_interested_in"
           control={control}
           render={({ field, fieldState }) => (
-            <Field className="w-full col-span-2 text-black-pearl">
+            <Field className="w-full gap-2 col-span-2 text-black-pearl">
               <FieldLabel className="text-charade ">
                 What Are you Interested In
               </FieldLabel>
@@ -249,7 +249,7 @@ export default function ContactForm() {
           name="message"
           control={control}
           render={({ field, fieldState }) => (
-            <Field className="w-full">
+            <Field className="w-full gap-2">
               <FieldLabel className="text-charade ">Message</FieldLabel>
 
               <Textarea
@@ -267,7 +267,7 @@ export default function ContactForm() {
           name="tnc"
           control={control}
           render={({ field, fieldState }) => (
-            <Field className="w-full">
+            <Field className="w-full gap-2">
               <div className="flex items-center gap-2">
                 <Checkbox
                   id="tnc"
