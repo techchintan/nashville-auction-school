@@ -29,15 +29,16 @@ export const generateMetadata = async () => {
 const HomePage = async () => {
   const { data: homePage }: { data: NonNullable<HomePageQueryResult> } =
     await sanityFetch({ query: homePageQuery });
-    const {data: courses}: {data: NonNullable<AAACoursesQueryResult>} = await sanityFetchAAA({
-    query: coursesQuery,
-  });
+  const { data: courses }: { data: NonNullable<AAACoursesQueryResult> } =
+    await sanityFetchAAA({
+      query: coursesQuery,
+    });
   return (
     <div className="pt-26">
       <HeroBanner homePage={homePage} />
-      <UpcomingCourses homePage={homePage} courses={courses}/>
+      <UpcomingCourses homePage={homePage} courses={courses} />
       <WhyUs homePage={homePage} />
-      <OurCourses homePage={homePage} courses={courses}/>
+      <OurCourses homePage={homePage} courses={courses} />
       <ContinuingEducation homePage={homePage} />
       <BecomeAVip homePage={homePage} />
       <Solutions homePage={homePage} />

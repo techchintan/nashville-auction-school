@@ -628,7 +628,8 @@
       "overviewCourseValidationNote": {
         "type": "objectAttribute",
         "value": {
-          "type": "string"
+          "type": "inline",
+          "name": "blockContent"
         },
         "optional": false
       }

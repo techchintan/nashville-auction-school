@@ -95,7 +95,8 @@
   --color-kawaii-grey: var(--color-kawaii-grey);
   --color-vibrant-silver: var(--color-vibrant-silver);
   --color-eternity: var(--color-eternity);
-  --color-charade:var(--color-charade)
+  --color-charade: var(--color-charade);
+  --color-medium-orchid: var(--color-medium-orchid);
 }
 
 :root {
@@ -141,11 +142,12 @@
   --color-dull-black: #161616;
   --color-atomic-grey: #575757;
   --color-grape: #6b21a8;
+  --color-medium-orchid: #af52de;
   --color-blue-chalk: #f3e8ff;
-  --color-kawaii-grey: #C9C9C9;
-  --color-vibrant-silver: #CECECE;
-  --color-eternity: #21180F;
-  --color-charade:#272D37;
+  --color-kawaii-grey: #c9c9c9;
+  --color-vibrant-silver: #cecece;
+  --color-eternity: #21180f;
+  --color-charade: #272d37;
 }
 
 .dark {

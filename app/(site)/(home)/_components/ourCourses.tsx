@@ -8,10 +8,10 @@ import { AAACoursesQueryResult } from "@/types";
 
 const OurCourses = ({
   homePage,
-  courses
+  courses,
 }: {
   homePage: NonNullable<HomePageQueryResult>;
-  courses: NonNullable<AAACoursesQueryResult>
+  courses: NonNullable<AAACoursesQueryResult>;
 }) => {
   return (
     <div className="relative">
@@ -42,7 +42,13 @@ const OurCourses = ({
               )}
             >
               <div className="w-full min-h-50 bg-gray-400 relative">
-                <SanityImage src={course.courseImage} alt={course.courseImage.asset?.altText || course.courseTitle} fromAAA fill className="object-cover"/>
+                <SanityImage
+                  src={course.courseImage}
+                  alt={course.courseImage.asset?.altText || course.courseTitle}
+                  fromAAA
+                  fill
+                  className="object-cover"
+                />
                 <span className="absolute left-4 top-4 z-1 py-1 px-2 bg-blue-chalk text-grape rounded-[5px] text-sm font-roboto">
                   New
                 </span>

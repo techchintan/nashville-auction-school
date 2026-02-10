@@ -1,4 +1,4 @@
-import { HighlighterIcon } from "lucide-react";
+import { AArrowUpIcon, HighlighterIcon } from "lucide-react";
 import { defineField } from "sanity";
 
 export const commonRichFields = [
@@ -22,6 +22,16 @@ export const commonRichFields = [
       decorators: [
         { title: "Strong", value: "strong" },
         { title: "Emphasis", value: "em" },
+        {
+          title: "Highlighted Text",
+          value: "highlightedText",
+          icon: () => <AArrowUpIcon className="h-4 w-4" />,
+          component: ({ children }: { children: React.ReactNode }) => (
+            <span className="text-[18px] sm:text-[20px] text-black-pearl font-bold">
+              {children}
+            </span>
+          ),
+        },
       ],
       annotations: [
         {

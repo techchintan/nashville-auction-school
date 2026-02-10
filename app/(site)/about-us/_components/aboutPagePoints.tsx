@@ -13,7 +13,7 @@ const AboutPagePoints = ({
     <div className="max-width-container">
       {aboutPagePoints.map((point, index) => (
         <div className="grid grid-cols-1 lg:grid-cols-2 " key={point._key}>
-          <div className={cn('w-full h-full',index%2!==0 && "lg:order-2")}>
+          <div className={cn("w-full h-full", index % 2 !== 0 && "lg:order-2")}>
             <SanityImage
               src={point.image}
               alt={point.image.alt}
@@ -22,7 +22,12 @@ const AboutPagePoints = ({
               className="w-full h-full object-cover"
             />
           </div>
-          <div className={cn("px-4 pt-6 pb-12 md:px-8 place-content-center",index%2!==0 && "lg:order-1")}>
+          <div
+            className={cn(
+              "px-4 pt-6 pb-12 md:px-8 place-content-center",
+              index % 2 !== 0 && "lg:order-1",
+            )}
+          >
             <div className="flex flex-col gap-4">
               <HammerHeading text={point.heading} />
               <RichText

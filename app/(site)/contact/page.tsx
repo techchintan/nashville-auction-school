@@ -6,7 +6,9 @@ import HeroBanner from "./component/heroBanner";
 import Contact from "./component/contact";
 
 export async function generateMetadata() {
-  const { data }: {data: NonNullable<ContactQueryResult>} = await sanityFetch({ query: contactQuery });
+  const { data }: { data: NonNullable<ContactQueryResult> } = await sanityFetch(
+    { query: contactQuery },
+  );
 
   if (!data) {
     return {};
@@ -19,10 +21,12 @@ export async function generateMetadata() {
 }
 
 export default async function ContactPage() {
-  const { data }: {data: NonNullable<ContactQueryResult>} = await sanityFetch({ query: contactQuery });
+  const { data }: { data: NonNullable<ContactQueryResult> } = await sanityFetch(
+    { query: contactQuery },
+  );
 
   if (!data) {
-    return notFound()
+    return notFound();
   }
 
   return (

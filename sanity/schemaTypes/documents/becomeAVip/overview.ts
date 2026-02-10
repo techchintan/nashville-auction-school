@@ -18,7 +18,7 @@ export const overview = [
   defineField({
     name: "overviewCourseValidationNote",
     title: "Overview Course Validation Note",
-    type: "text",
+    type: "blockContent",
     group: "overview",
     validation: (Rule) => Rule.required(),
   }),

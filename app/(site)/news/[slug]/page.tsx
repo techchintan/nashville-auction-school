@@ -7,12 +7,17 @@ import { client } from "@/sanity/lib/client";
 import { sanityFetchAAA } from "@/sanity/lib/liveAAAA";
 import { NewsDetailQueryResult, NewsQueryResult } from "@/types";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const slug = (await params).slug;
-  const { data }: {data: NonNullable<NewsDetailQueryResult>} = await sanityFetchAAA({
-    query: newsDetailQuery,
-    params: { slug },
-  });
+  const { data }: { data: NonNullable<NewsDetailQueryResult> } =
+    await sanityFetchAAA({
+      query: newsDetailQuery,
+      params: { slug },
+    });
   if (!data) {
     return {};
   }
@@ -26,12 +31,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function NewsDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const slug = (await params).slug;
-  const { data }: {data: NonNullable<NewsDetailQueryResult>} = await sanityFetchAAA({
-    query: newsDetailQuery,
-    params: { slug },
-  });
+  const { data }: { data: NonNullable<NewsDetailQueryResult> } =
+    await sanityFetchAAA({
+      query: newsDetailQuery,
+      params: { slug },
+    });
 
   if (!data) {
     redirect("/news");
@@ -52,7 +62,9 @@ export async function generateStaticParams() {
     return [];
   }
 
-  return data.newsList.map((news: NonNullable<NewsQueryResult>["newsList"][number]) => ({
-    slug: news.slug.current,
-  }));
+  return data.newsList.map(
+    (news: NonNullable<NewsQueryResult>["newsList"][number]) => ({
+      slug: news.slug.current,
+    }),
+  );
 }

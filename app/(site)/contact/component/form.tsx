@@ -222,7 +222,10 @@ export default function ContactForm() {
               </FieldLabel>
 
               <Select value={field.value} onValueChange={field.onChange}>
-                <SelectTrigger className="w-full" aria-invalid={fieldState.error?.message ? true : false}>
+                <SelectTrigger
+                  className="w-full"
+                  aria-invalid={fieldState.error?.message ? true : false}
+                >
                   <SelectValue placeholder="Select your answer" />
                 </SelectTrigger>
                 <SelectContent>

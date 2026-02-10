@@ -22,7 +22,7 @@ export const vipDetail = [
     group: "vipDetail",
     validation: (Rule) => Rule.required(),
   }),
-  
+
   defineField({
     name: "vipDetailInfoPoints",
     title: "Vip Detail Info Points",

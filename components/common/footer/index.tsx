@@ -92,8 +92,10 @@ const Footer = ({
             </div>
           </div>
         </div>
-<div className="h-px bg-kawaii-grey my-10"/>
-<p className="text-black-pearl text-center">@{new Date().getFullYear()} Nashville Auction School</p>
+        <div className="h-px bg-kawaii-grey my-10" />
+        <p className="text-black-pearl text-center">
+          @{new Date().getFullYear()} Nashville Auction School
+        </p>
       </div>
     </footer>
   );

@@ -6,10 +6,10 @@ import { sanityFetchAAA } from "@/sanity/lib/liveAAAA";
 import { NewsQueryResult } from "@/types";
 import { NewsPageQueryResult } from "@/sanity.types";
 import { sanityFetch } from "@/sanity/lib/live";
-   
 
 export async function generateMetadata() {
-  const { data }: {data: NonNullable<NewsPageQueryResult>} = await sanityFetch({ query: newsPageQuery});
+  const { data }: { data: NonNullable<NewsPageQueryResult> } =
+    await sanityFetch({ query: newsPageQuery });
 
   if (!data) {
     return {};
@@ -22,13 +22,15 @@ export async function generateMetadata() {
 }
 
 export default async function NewsPage() {
-  const { data: newsData }: {data: NonNullable<NewsQueryResult>} = await sanityFetchAAA({ query: newsQuery });
+  const { data: newsData }: { data: NonNullable<NewsQueryResult> } =
+    await sanityFetchAAA({ query: newsQuery });
 
-  const { data: newsPage }: {data: NonNullable<NewsPageQueryResult>} = await sanityFetch({ query: newsPageQuery});
+  const { data: newsPage }: { data: NonNullable<NewsPageQueryResult> } =
+    await sanityFetch({ query: newsPageQuery });
 
   if (!newsData || !newsPage) {
-    return notFound()
-  }          
+    return notFound();
+  }
 
   return (
     <div className="pt-26">

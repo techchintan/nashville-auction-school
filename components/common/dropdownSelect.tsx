@@ -22,8 +22,10 @@ const DropdownSelect = ({
 }: DropdownSelectProps) => {
   return (
     <div className="relative flex flex-col gap-2">
-      {label && <Label className="text-xl font-bold text-black-pearl">{label}</Label>}
-      <Select onValueChange={onSelect} defaultValue={selectedOption.label} >
+      {label && (
+        <Label className="text-xl font-bold text-black-pearl">{label}</Label>
+      )}
+      <Select onValueChange={onSelect} defaultValue={selectedOption.label}>
         <SelectTrigger className="border-grey-200 flex w-full items-center justify-between rounded-sm border px-4 py-1 ring-0 ring-offset-0 focus:ring-0 focus:ring-offset-0 focus-visible:shadow-none">
           {selectedOption?.value ? (
             <div className="flex w-full items-center gap-2">
@@ -38,7 +40,7 @@ const DropdownSelect = ({
             </span>
           )}
         </SelectTrigger>
-        <SelectContent className="max-h-60 w-min rounded-sm" position='popper'>
+        <SelectContent className="max-h-60 w-min rounded-sm" position="popper">
           {menuItems?.map((option, index) => {
             return (
               <SelectItem

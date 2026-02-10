@@ -1,18 +1,22 @@
 import { SanityImage } from "@/components/common/image";
-import { ContactQueryResult } from "@/sanity.types";
+import { BecomeAVipPageQueryResult } from "@/sanity.types";
 
-const HeroBanner = ({ data }: { data: NonNullable<ContactQueryResult> }) => {
+export const HeroBanner = ({
+  becomeAVip,
+}: {
+  becomeAVip: NonNullable<BecomeAVipPageQueryResult>;
+}) => {
   return (
     <div className="relative aspect-3/4 max-h-150 w-full sm:aspect-auto sm:h-150">
       <SanityImage
-        src={data.heroBannerBackgroundImage}
-        alt={data.heroBannerBackgroundImage.alt}
+        src={becomeAVip.heroBannerBackgroundImage}
+        alt={becomeAVip.heroBannerBackgroundImage.alt}
         className="z-0 hidden h-full w-full object-cover object-right sm:block"
         fill
       />
       <div className="relative z-1 flex h-full w-full flex-col justify-end bg-eternity/60">
         <div className="max-width-container padding-container flex h-full w-full flex-col justify-end">
-          <div className="hero-banner-title">{data.heroBannerTitle}</div>
+          <div className="hero-banner-title">{becomeAVip.heroBannerTitle}</div>
         </div>
       </div>
     </div>

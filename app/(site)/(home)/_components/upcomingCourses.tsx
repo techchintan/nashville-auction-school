@@ -8,10 +8,10 @@ import Link from "next/link";
 
 const UpcomingCourses = ({
   homePage,
-  courses
+  courses,
 }: {
   homePage: NonNullable<HomePageQueryResult>;
-  courses: NonNullable<AAACoursesQueryResult>
+  courses: NonNullable<AAACoursesQueryResult>;
 }) => {
   return (
     <div className="bg-black-pearl">

@@ -93,7 +93,10 @@ const Header = ({
             <Link
               href={link.url}
               key={link._key}
-              className={cn("hover:text-vivid-orange duration-300", pathname === link.url && 'text-vivid-orange')}
+              className={cn(
+                "hover:text-vivid-orange duration-300",
+                pathname === link.url && "text-vivid-orange",
+              )}
             >
               {link.label}
             </Link>

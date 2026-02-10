@@ -32,8 +32,8 @@ const AboutPage = async () => {
     <div className="pt-26">
       <Herobanner aboutPage={aboutPage} />
       <About aboutPage={aboutPage} />
-      <GuidedBy aboutPage={aboutPage}/>
-      <AboutPagePoints aboutPagePoints={aboutPage.aboutPagePoints}/>
+      <GuidedBy aboutPage={aboutPage} />
+      <AboutPagePoints aboutPagePoints={aboutPage.aboutPagePoints} />
     </div>
   );
 };

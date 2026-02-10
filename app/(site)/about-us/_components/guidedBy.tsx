@@ -3,10 +3,13 @@ import { SanityImage } from "@/components/common/image";
 import RichText from "@/components/common/rich-text";
 import { AboutPageQueryResult } from "@/sanity.types";
 
-const GuidedBy = ({aboutPage}: {aboutPage: NonNullable<AboutPageQueryResult>}) => {
+const GuidedBy = ({
+  aboutPage,
+}: {
+  aboutPage: NonNullable<AboutPageQueryResult>;
+}) => {
   return (
     <div className="relative bg-shiny-white">
-      
       <div className="max-width-container padding-container relative items-center  z-1 grid h-full grid-cols-1 gap-5 lg:grid-cols-2">
         <div className="flex flex-col gap-4">
           <HammerHeading text={aboutPage.guidedByHeading} />
